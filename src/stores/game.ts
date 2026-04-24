@@ -16,18 +16,18 @@ function isSumOfValue(c: Category): c is Category & { scoring: { type: 'sum-of-v
   return c.scoring.type === 'sum-of-value'
 }
 
+export interface HistoryEntry {
+  playerId: string
+  categoryId: string
+  previousScore: number | null
+  previousActivePlayerIndex: number
+}
+
 export const useGameStore = defineStore('game', () => {
   const currentView = ref<'setup' | 'game' | 'results'>('setup')
   const ruleSet = ref<RuleSet>(RULESETS[0])
   const players = ref<Player[]>([])
   const activePlayerIndex = ref(0)
-
-  interface HistoryEntry {
-    playerId: string
-    categoryId: string
-    previousScore: number | null
-    previousActivePlayerIndex: number
-  }
 
   const undoStack = ref<HistoryEntry[]>([])
 

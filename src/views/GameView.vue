@@ -54,8 +54,8 @@
           <template v-if="player.scores[cat.id] !== null">
             <span
               :style="deltaStyle(player, cat)"
+              class="score-filled"
               v-bind="useLongPress(() => { editTarget = { player, category: cat } })"
-              style="touch-action: none;"
             >{{ formatDelta(player, cat) }}</span>
           </template>
           <template v-else>
@@ -108,8 +108,8 @@
           <template v-if="player.scores[cat.id] !== null">
             <span
               :style="{ color: player.color, fontWeight: 600 }"
+              class="score-filled"
               v-bind="useLongPress(() => { editTarget = { player, category: cat } })"
-              style="touch-action: none;"
             >{{ player.scores[cat.id] }}</span>
           </template>
           <template v-else>
@@ -174,10 +174,12 @@ const activeCategory = ref<Category | null>(null)
 
 function useLongPress(onLongPress: () => void, duration = 500) {
   let timer: ReturnType<typeof setTimeout> | null = null
+  function cancel() { if (timer) { clearTimeout(timer); timer = null } }
   return {
     onPointerdown() { timer = setTimeout(onLongPress, duration) },
-    onPointerup() { if (timer) { clearTimeout(timer); timer = null } },
-    onPointercancel() { if (timer) { clearTimeout(timer); timer = null } },
+    onPointerup: cancel,
+    onPointercancel: cancel,
+    onPointerleave: cancel,
   }
 }
 
@@ -468,6 +470,10 @@ function deltaStyle(player: Player, cat: Category) {
   cursor: pointer;
 }
 
+.score-filled {
+  touch-action: none;
+}
+
 .undo-btn {
   background: var(--surface-3);
   border: 1px solid var(--border-2);
@@ -476,6 +482,7 @@ function deltaStyle(player: Player, cat: Category) {
   width: 32px;
   height: 32px;
   font-size: 16px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
