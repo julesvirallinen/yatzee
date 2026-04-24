@@ -11,9 +11,9 @@
         <span class="cat-hint">{{ hint }}</span>
       </div>
 
-      <!-- Fixed-score category: just confirm or cross out -->
+      <!-- Fixed-score: just confirm or cross out -->
       <template v-if="category.scoring.type === 'fixed'">
-        <div class="fixed-score-display">
+        <div class="fixed-display">
           {{ (category.scoring as { type: 'fixed'; points: number }).points }} pts
         </div>
         <div class="actions">
@@ -24,7 +24,7 @@
         </div>
       </template>
 
-      <!-- sum-of-value: quick buttons + stepper -->
+      <!-- sum-of-value: quick buttons (fast path) + numpad -->
       <template v-else-if="category.scoring.type === 'sum-of-value'">
         <div class="quick-label">QUICK SELECT</div>
         <div class="quick-buttons">
@@ -37,18 +37,8 @@
             @click="manualValue = n"
           >{{ n }}</button>
         </div>
-        <div class="divider"><span>or enter manually</span></div>
-        <div class="stepper">
-          <button class="step-btn" @click="manualValue = Math.max(0, manualValue - stepSize)">−</button>
-          <input
-            type="number"
-            v-model.number="manualValue"
-            min="0"
-            :max="maxValue"
-            class="step-input"
-          />
-          <button class="step-btn" @click="manualValue = Math.min(maxValue, manualValue + stepSize)">+</button>
-        </div>
+        <div class="divider"><span>or</span></div>
+        <NumPad v-model="manualValue" :max="maxValue" />
         <div class="actions">
           <button class="confirm-btn" :style="confirmStyle" @click="confirm(manualValue)">
             Confirm {{ manualValue }}
@@ -57,18 +47,9 @@
         </div>
       </template>
 
-      <!-- sum-all: stepper only -->
+      <!-- sum-all: numpad only -->
       <template v-else>
-        <div class="stepper" style="margin-top: 20px;">
-          <button class="step-btn" @click="manualValue = Math.max(0, manualValue - 1)">−</button>
-          <input
-            type="number"
-            v-model.number="manualValue"
-            min="0"
-            class="step-input"
-          />
-          <button class="step-btn" @click="manualValue++">+</button>
-        </div>
+        <NumPad v-model="manualValue" />
         <div class="actions">
           <button class="confirm-btn" :style="confirmStyle" @click="confirm(manualValue)">
             Confirm {{ manualValue }}
@@ -84,6 +65,7 @@
 import { ref, computed } from 'vue'
 import type { Category } from '../rulesets/types'
 import type { Player } from '../stores/game'
+import NumPad from './NumPad.vue'
 
 const props = defineProps<{
   category: Category
@@ -102,13 +84,6 @@ const hint = computed(() => {
   if (props.category.scoring.type === 'sum-of-value') return `sum of all ${props.category.name.toLowerCase()} rolled`
   if (props.category.scoring.type === 'fixed') return `fixed score`
   return 'sum of dice used'
-})
-
-const stepSize = computed(() => {
-  if (props.category.scoring.type === 'sum-of-value') {
-    return (props.category.scoring as { type: 'sum-of-value'; value: number }).value
-  }
-  return 1
 })
 
 const maxValue = computed(() => {
@@ -160,7 +135,7 @@ function confirm(score: number) {
   background: #141414;
   border-radius: 24px 24px 0 0;
   border-top: 1px solid var(--border-2);
-  padding-bottom: env(safe-area-inset-bottom, 24px);
+  padding-bottom: env(safe-area-inset-bottom, 16px);
 }
 
 .handle-bar {
@@ -175,7 +150,7 @@ function confirm(score: number) {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 8px 20px 12px;
+  padding: 8px 20px 10px;
   border-bottom: 1px solid var(--border-1);
 }
 
@@ -184,7 +159,7 @@ function confirm(score: number) {
 .cat-name { color: var(--text-muted); }
 .cat-hint { font-size: 12px; color: var(--neutral); }
 
-.fixed-score-display {
+.fixed-display {
   text-align: center;
   font-size: 36px;
   font-weight: 800;
@@ -197,7 +172,7 @@ function confirm(score: number) {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--text-muted);
-  padding: 18px 20px 10px;
+  padding: 14px 20px 8px;
 }
 
 .quick-buttons {
@@ -210,8 +185,8 @@ function confirm(score: number) {
 .quick-btn {
   flex: 1;
   border-radius: 10px;
-  padding: 12px 0;
-  font-size: 16px;
+  padding: 10px 0;
+  font-size: 15px;
   font-weight: 600;
   transition: all 0.1s;
 }
@@ -220,7 +195,7 @@ function confirm(score: number) {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 20px;
+  padding: 10px 20px;
   color: var(--text-faint);
   font-size: 11px;
 }
@@ -233,43 +208,10 @@ function confirm(score: number) {
   background: var(--border-1);
 }
 
-.stepper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 20px 18px;
-}
-
-.step-btn {
-  width: 44px;
-  height: 44px;
-  background: var(--surface-3);
-  border: 1px solid var(--border-2);
-  border-radius: 10px;
-  color: var(--text-secondary);
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.step-input {
-  flex: 1;
-  background: var(--surface-3);
-  border: 1px solid var(--border-2);
-  border-radius: 10px;
-  color: var(--text-primary);
-  padding: 10px;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.step-input::-webkit-inner-spin-button,
-.step-input::-webkit-outer-spin-button { -webkit-appearance: none; }
-
 .actions {
   display: flex;
   gap: 10px;
-  padding: 0 20px 4px;
+  padding: 0 16px 4px;
 }
 
 .confirm-btn {
@@ -278,7 +220,6 @@ function confirm(score: number) {
   padding: 14px;
   font-size: 15px;
   font-weight: 700;
-  transition: opacity 0.1s;
 }
 
 .cross-btn {
