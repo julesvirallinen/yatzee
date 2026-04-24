@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import type { RuleSet } from '../rulesets/types'
+import type { Category, RuleSet } from '../rulesets/types'
 import { RULESETS } from '../rulesets'
 
 export interface Player {
@@ -11,6 +11,10 @@ export interface Player {
 }
 
 const PLAYER_COLORS = ['#a78bfa', '#34d399', '#fb923c', '#f87171']
+
+function isSumOfValue(c: Category): c is Category & { scoring: { type: 'sum-of-value'; value: number } } {
+  return c.scoring.type === 'sum-of-value'
+}
 
 export const useGameStore = defineStore('game', () => {
   const currentView = ref<'setup' | 'game' | 'results'>('setup')
@@ -38,21 +42,21 @@ export const useGameStore = defineStore('game', () => {
   }
 
   function upperTotal(playerId: string): number {
-    const player = players.value.find(p => p.id === playerId)!
+    const player = players.value.find(p => p.id === playerId)
+    if (!player) return 0
     return ruleSet.value.categories
       .filter(c => c.section === 'upper')
       .reduce((sum, c) => sum + (player.scores[c.id] ?? 0), 0)
   }
 
   function upperDelta(playerId: string): number {
-    const player = players.value.find(p => p.id === playerId)!
+    const player = players.value.find(p => p.id === playerId)
+    if (!player) return 0
     return ruleSet.value.categories
-      .filter(c => c.section === 'upper' && c.scoring.type === 'sum-of-value')
+      .filter(c => c.section === 'upper')
+      .filter(isSumOfValue)
       .filter(c => player.scores[c.id] !== null)
-      .reduce((sum, c) => {
-        const pace = 3 * (c.scoring as { type: 'sum-of-value'; value: number }).value
-        return sum + (player.scores[c.id]! - pace)
-      }, 0)
+      .reduce((sum, c) => sum + (player.scores[c.id]! - 3 * c.scoring.value), 0)
   }
 
   function bonusEarned(playerId: string): boolean {
@@ -60,7 +64,8 @@ export const useGameStore = defineStore('game', () => {
   }
 
   function lowerTotal(playerId: string): number {
-    const player = players.value.find(p => p.id === playerId)!
+    const player = players.value.find(p => p.id === playerId)
+    if (!player) return 0
     return ruleSet.value.categories
       .filter(c => c.section === 'lower')
       .reduce((sum, c) => sum + (player.scores[c.id] ?? 0), 0)
@@ -81,6 +86,7 @@ export const useGameStore = defineStore('game', () => {
 
   function advanceTurn() {
     const n = players.value.length
+    if (n === 0) return
     let next = (activePlayerIndex.value + 1) % n
     let attempts = 0
     while (attempts < n) {
