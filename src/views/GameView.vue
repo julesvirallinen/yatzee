@@ -44,7 +44,7 @@
         :key="cat.id"
         class="row upper-row"
       >
-        <div class="cat-name-cell">{{ cat.name }}</div>
+        <div class="cat-name-cell"><CategoryLabel :categoryId="cat.id" /></div>
         <div
           v-for="(player, pi) in store.players"
           :key="player.id"
@@ -98,7 +98,7 @@
         :key="cat.id"
         class="row lower-row"
       >
-        <div class="cat-name-cell">{{ cat.name }}</div>
+        <div class="cat-name-cell"><CategoryLabel :categoryId="cat.id" /></div>
         <div
           v-for="(player, pi) in store.players"
           :key="player.id"
@@ -167,6 +167,7 @@ import { useGameStore } from '../stores/game'
 import type { Category } from '../rulesets/types'
 import type { Player } from '../stores/game'
 import ScoreModal from '../components/ScoreModal.vue'
+import CategoryLabel from '../components/CategoryLabel.vue'
 
 const store = useGameStore()
 
@@ -389,12 +390,10 @@ function deltaStyle(player: Player, cat: Category) {
 
 .cat-name-cell {
   flex: 1;
-  padding: 0 16px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  min-width: 0;
 }
 
 .bonus-label {
