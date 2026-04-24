@@ -33,3 +33,12 @@ html, body {
 
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 input { font-family: inherit; }
+
+.game {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.setup, .results {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
