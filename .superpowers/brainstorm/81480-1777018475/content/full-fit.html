@@ -1,0 +1,293 @@
+<h2>All Categories — Does It Fit?</h2>
+<p class="subtitle">Trying two density levels. Can all 15 rows + bonus + total show without scrolling?</p>
+
+<div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:8px;">
+
+  <!-- Option A: Compact rows -->
+  <div>
+    <p class="subtitle" style="text-align:center; margin-bottom:8px;">A — Compact (no scroll)</p>
+    <div style="
+      width: 393px;
+      height: 852px;
+      background: #0a0a0a;
+      border-radius: 48px;
+      border: 2px solid #2a2a2a;
+      box-shadow: 0 0 0 1px #111, 0 20px 60px rgba(0,0,0,0.8);
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+    ">
+      <!-- Status bar -->
+      <div style="height:44px; background:#0a0a0a; display:flex; align-items:center; justify-content:space-between; padding:0 28px; flex-shrink:0;">
+        <span style="color:#ccc; font-size:13px; font-weight:600;">9:41</span>
+        <div style="width:110px; height:26px; background:#111; border-radius:20px;"></div>
+        <span style="color:#ccc; font-size:12px;">●●●</span>
+      </div>
+
+      <!-- Compact app header (no banner, turn shown in column header) -->
+      <div style="padding:6px 14px 6px; background:#0a0a0a; border-bottom:1px solid #1a1a1a; flex-shrink:0; display:flex; align-items:center; justify-content:space-between;">
+        <span style="color:#e0e0e0; font-size:16px; font-weight:700; letter-spacing:-.5px;">Yatzy</span>
+        <div style="background:#1a1a1a; border-radius:20px; padding:4px 10px; color:#555; font-size:11px;">Round 4 / 15</div>
+      </div>
+
+      <!-- Table fills remaining space -->
+      <div style="flex:1; display:flex; flex-direction:column; overflow:hidden;">
+        <table style="width:100%; border-collapse:collapse; font-size:13px; flex:1;">
+          <thead>
+            <tr style="background:#111; border-bottom:1px solid #1e1e1e;">
+              <th style="padding:7px 12px; text-align:left; color:#333; font-size:9px; font-weight:700; letter-spacing:.1em;">CATEGORY</th>
+              <th style="padding:7px 6px; text-align:center; min-width:75px;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:1px;">
+                  <div style="width:5px; height:5px; border-radius:50%; background:#a78bfa; box-shadow:0 0 5px #a78bfa;"></div>
+                  <span style="color:#a78bfa; font-size:11px; font-weight:700;">ALICE</span>
+                </div>
+              </th>
+              <th style="padding:7px 6px; text-align:center; min-width:75px; opacity:0.4;">
+                <span style="color:#34d399; font-size:11px; font-weight:700;">BOB</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- UPPER section label -->
+            <tr style="background:#0d0d0d;">
+              <td colspan="3" style="padding:3px 12px; color:#2a2a2a; font-size:9px; font-weight:700; letter-spacing:.1em;">UPPER</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:7px 12px; color:#777; font-size:13px;">Ones</td>
+              <td style="padding:7px 6px; text-align:center; color:#a78bfa; font-weight:600;">2</td>
+              <td style="padding:7px 6px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">3</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:7px 12px; color:#777;">Twos</td>
+              <td style="padding:7px 6px; text-align:center; color:#a78bfa; font-weight:600;">8</td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Threes</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:7px 6px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">9</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:7px 12px; color:#777;">Fours</td>
+              <td style="padding:7px 6px; text-align:center; color:#a78bfa; font-weight:600;">12</td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Fives</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:7px 6px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">20</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Sixes</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <!-- Bonus -->
+            <tr style="background:#111; border-top:1px solid #1e1e1e; border-bottom:1px solid #1e1e1e;">
+              <td style="padding:5px 12px; color:#333; font-size:10px;">Bonus ≥63 → +50</td>
+              <td style="padding:4px 6px; text-align:center;">
+                <div style="color:#444; font-size:9px; line-height:1.2;">22/63</div>
+                <div style="color:#f87171; font-size:11px; font-weight:700;">−14</div>
+              </td>
+              <td style="padding:4px 6px; text-align:center; opacity:0.4;">
+                <div style="color:#444; font-size:9px; line-height:1.2;">32/63</div>
+                <div style="color:#34d399; font-size:11px; font-weight:700;">+5</div>
+              </td>
+            </tr>
+
+            <!-- LOWER section label -->
+            <tr style="background:#0d0d0d;">
+              <td colspan="3" style="padding:3px 12px; color:#2a2a2a; font-size:9px; font-weight:700; letter-spacing:.1em;">LOWER</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">One Pair</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:7px 6px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">12</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Two Pairs</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:7px 6px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">18</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Three of a Kind</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Four of a Kind</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Small Straight</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Large Straight</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Full House</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Chance</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:7px 12px; color:#ccc; font-weight:500;">Yatzy</td>
+              <td style="padding:5px 6px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:5px; padding:3px 0; color:#a78bfa; font-size:12px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:5px 6px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:5px; padding:3px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+
+            <!-- Total -->
+            <tr style="background:#111; border-top:2px solid #1e1e1e;">
+              <td style="padding:10px 12px; color:#555; font-size:11px; font-weight:700; letter-spacing:.08em;">TOTAL</td>
+              <td style="padding:10px 6px; text-align:center; color:#a78bfa; font-size:17px; font-weight:800;">52</td>
+              <td style="padding:10px 6px; text-align:center; color:#34d399; font-size:17px; font-weight:800; opacity:0.4;">62</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option B: Scroll accepted, more breathing room -->
+  <div>
+    <p class="subtitle" style="text-align:center; margin-bottom:8px;">B — Comfortable (scroll for lower)</p>
+    <div style="
+      width: 393px;
+      height: 852px;
+      background: #0a0a0a;
+      border-radius: 48px;
+      border: 2px solid #2a2a2a;
+      box-shadow: 0 0 0 1px #111, 0 20px 60px rgba(0,0,0,0.8);
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+    ">
+      <!-- Status bar -->
+      <div style="height:44px; background:#0a0a0a; display:flex; align-items:center; justify-content:space-between; padding:0 28px; flex-shrink:0;">
+        <span style="color:#ccc; font-size:13px; font-weight:600;">9:41</span>
+        <div style="width:110px; height:26px; background:#111; border-radius:20px;"></div>
+        <span style="color:#ccc; font-size:12px;">●●●</span>
+      </div>
+
+      <div style="padding:8px 16px 8px; background:#0a0a0a; border-bottom:1px solid #1a1a1a; flex-shrink:0; display:flex; align-items:center; justify-content:space-between;">
+        <span style="color:#e0e0e0; font-size:18px; font-weight:700;">Yatzy</span>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <div style="display:flex; align-items:center; gap:6px; background:#a78bfa18; border:1px solid #a78bfa44; border-radius:20px; padding:5px 10px;">
+            <div style="width:6px; height:6px; border-radius:50%; background:#a78bfa; box-shadow:0 0 5px #a78bfa;"></div>
+            <span style="color:#a78bfa; font-size:11px; font-weight:600;">Alice's turn</span>
+          </div>
+          <div style="background:#1a1a1a; border-radius:20px; padding:5px 10px; color:#555; font-size:11px;">4/15</div>
+        </div>
+      </div>
+
+      <div style="flex:1; overflow-y:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:14px;">
+          <thead style="position:sticky; top:0; z-index:10;">
+            <tr style="background:#111; border-bottom:1px solid #1e1e1e;">
+              <th style="padding:9px 14px; text-align:left; color:#333; font-size:10px; font-weight:700; letter-spacing:.1em;">CATEGORY</th>
+              <th style="padding:9px 8px; text-align:center; min-width:80px;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
+                  <div style="width:5px; height:5px; border-radius:50%; background:#a78bfa; box-shadow:0 0 5px #a78bfa;"></div>
+                  <span style="color:#a78bfa; font-size:12px; font-weight:700;">ALICE</span>
+                </div>
+              </th>
+              <th style="padding:9px 8px; text-align:center; min-width:80px; opacity:0.4;">
+                <span style="color:#34d399; font-size:12px; font-weight:700;">BOB</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#0d0d0d;">
+              <td colspan="3" style="padding:4px 14px; color:#2a2a2a; font-size:9px; font-weight:700; letter-spacing:.1em;">UPPER</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;"><td style="padding:10px 14px; color:#777;">Ones</td><td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">2</td><td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:.4;">3</td></tr>
+            <tr style="border-bottom:1px solid #141414;"><td style="padding:10px 14px; color:#777;">Twos</td><td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">8</td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Threes</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:.4;">9</td></tr>
+            <tr style="border-bottom:1px solid #141414;"><td style="padding:10px 14px; color:#777;">Fours</td><td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">12</td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Fives</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:.4;">20</td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Sixes</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+
+            <tr style="background:#111; border-top:1px solid #1e1e1e; border-bottom:2px solid #1e1e1e;">
+              <td style="padding:6px 14px; color:#333; font-size:11px;">Bonus ≥63 → +50</td>
+              <td style="padding:5px 8px; text-align:center;"><div style="color:#444; font-size:9px;">22/63</div><div style="color:#f87171; font-size:12px; font-weight:700;">−14</div></td>
+              <td style="padding:5px 8px; text-align:center; opacity:.4;"><div style="color:#444; font-size:9px;">32/63</div><div style="color:#34d399; font-size:12px; font-weight:700;">+5</div></td>
+            </tr>
+
+            <tr style="background:#0d0d0d;"><td colspan="3" style="padding:4px 14px; color:#2a2a2a; font-size:9px; font-weight:700; letter-spacing:.1em;">LOWER</td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">One Pair</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:.4;">12</td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Two Pairs</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:.4;">18</td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Three of a Kind</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Four of a Kind</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Small Straight</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Large Straight</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Full House</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Chance</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;"><td style="padding:10px 14px; color:#ccc; font-weight:500;">Yatzy</td><td style="padding:7px 8px; text-align:center;"><div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:4px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div></td><td style="padding:7px 8px; text-align:center; opacity:.4;"><div style="background:#1a2a1a; border-radius:6px; padding:4px 0; color:#34d39966; font-size:12px;">+</div></td></tr>
+
+            <tr style="background:#111; border-top:2px solid #1e1e1e;">
+              <td style="padding:12px 14px; color:#555; font-size:11px; font-weight:700; letter-spacing:.08em;">TOTAL</td>
+              <td style="padding:12px 8px; text-align:center; color:#a78bfa; font-size:18px; font-weight:800;">52</td>
+              <td style="padding:12px 8px; text-align:center; color:#34d399; font-size:18px; font-weight:800; opacity:.4;">62</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

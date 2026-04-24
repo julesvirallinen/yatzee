@@ -1,0 +1,31 @@
+import type { RuleSet } from './types'
+
+export const maxiYatzy: RuleSet = {
+  id: 'maxi-yatzy',
+  name: 'Maxi Yatzy — 6 dice',
+  numDice: 6,
+  bonusThreshold: 84,
+  bonusPoints: 100,
+  categories: [
+    { id: 'ones',   name: 'Ones',   section: 'upper', scoring: { type: 'sum-of-value', value: 1 } },
+    { id: 'twos',   name: 'Twos',   section: 'upper', scoring: { type: 'sum-of-value', value: 2 } },
+    { id: 'threes', name: 'Threes', section: 'upper', scoring: { type: 'sum-of-value', value: 3 } },
+    { id: 'fours',  name: 'Fours',  section: 'upper', scoring: { type: 'sum-of-value', value: 4 } },
+    { id: 'fives',  name: 'Fives',  section: 'upper', scoring: { type: 'sum-of-value', value: 5 } },
+    { id: 'sixes',  name: 'Sixes',  section: 'upper', scoring: { type: 'sum-of-value', value: 6 } },
+    { id: 'one-pair',        name: 'One Pair',        section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'two-pairs',       name: 'Two Pairs',       section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'three-pairs',     name: 'Three Pairs',     section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'three-of-a-kind', name: 'Three of a Kind', section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'four-of-a-kind',  name: 'Four of a Kind',  section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'five-of-a-kind',  name: 'Five of a Kind',  section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'small-straight',  name: 'Small Straight',  section: 'lower', scoring: { type: 'fixed', points: 15 } },
+    { id: 'large-straight',  name: 'Large Straight',  section: 'lower', scoring: { type: 'fixed', points: 20 } },
+    { id: 'full-straight',   name: 'Full Straight',   section: 'lower', scoring: { type: 'fixed', points: 21 } },
+    { id: 'full-house',      name: 'Full House',      section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'villa',           name: 'Villa',           section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'tower',           name: 'Tower',           section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'chance',          name: 'Chance',          section: 'lower', scoring: { type: 'sum-all' } },
+    { id: 'maxi-yatzy',      name: 'Maxi Yatzy',      section: 'lower', scoring: { type: 'fixed', points: 100 } },
+  ],
+}

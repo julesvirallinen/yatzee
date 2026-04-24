@@ -1,0 +1,237 @@
+<h2>Active Player State</h2>
+<p class="subtitle">Active player is highlighted — inactive column is dimmed. Whose turn it is is always obvious.</p>
+
+<div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:8px;">
+
+  <!-- Alice's turn -->
+  <div>
+    <p class="subtitle" style="text-align:center; margin-bottom:8px;">Alice's turn</p>
+    <div style="
+      width: 393px;
+      height: 852px;
+      background: #0a0a0a;
+      border-radius: 48px;
+      border: 2px solid #2a2a2a;
+      box-shadow: 0 0 0 1px #111, 0 20px 60px rgba(0,0,0,0.8);
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+    ">
+      <!-- Status bar -->
+      <div style="height:48px; background:#0a0a0a; display:flex; align-items:center; justify-content:space-between; padding:0 28px; flex-shrink:0;">
+        <span style="color:#ccc; font-size:13px; font-weight:600;">9:41</span>
+        <div style="width:120px; height:28px; background:#111; border-radius:20px;"></div>
+        <span style="color:#ccc; font-size:12px;">●●●</span>
+      </div>
+
+      <!-- App header with active player pill -->
+      <div style="padding:8px 16px 10px; background:#0a0a0a; border-bottom:1px solid #1a1a1a; flex-shrink:0;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+          <span style="color:#e0e0e0; font-size:18px; font-weight:700; letter-spacing:-.5px;">Yatzy</span>
+          <div style="background:#1a1a1a; border-radius:20px; padding:5px 12px; color:#555; font-size:11px;">Round 4 / 15</div>
+        </div>
+        <!-- Active player banner -->
+        <div style="background:#a78bfa18; border:1px solid #a78bfa44; border-radius:10px; padding:8px 12px; display:flex; align-items:center; gap:8px;">
+          <div style="width:8px; height:8px; border-radius:50%; background:#a78bfa; box-shadow:0 0 8px #a78bfa;"></div>
+          <span style="color:#a78bfa; font-size:13px; font-weight:600;">Alice's turn</span>
+          <span style="color:#555; font-size:12px; margin-left:auto;">tap a free slot →</span>
+        </div>
+      </div>
+
+      <!-- Scrollable score area -->
+      <div style="flex:1; overflow-y:auto;">
+        <table style="width:100%; border-collapse:collapse; font-size:14px;">
+          <thead style="position:sticky; top:0; z-index:10;">
+            <tr style="background:#111; border-bottom:1px solid #1e1e1e;">
+              <th style="padding:10px 16px; text-align:left; color:#444; font-size:10px; font-weight:700; letter-spacing:.1em; width:45%;">CATEGORY</th>
+              <!-- Alice: active = full brightness -->
+              <th style="padding:10px 8px; text-align:center; min-width:80px;">
+                <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
+                  <div style="width:6px; height:6px; border-radius:50%; background:#a78bfa; box-shadow:0 0 6px #a78bfa;"></div>
+                  <span style="color:#a78bfa; font-size:12px; font-weight:700;">ALICE</span>
+                </div>
+              </th>
+              <!-- Bob: inactive = dimmed -->
+              <th style="padding:10px 8px; text-align:center; min-width:80px; opacity:0.4;">
+                <span style="color:#34d399; font-size:12px; font-weight:700;">BOB</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#0d0d0d;">
+              <td colspan="3" style="padding:5px 16px; color:#2a2a2a; font-size:10px; font-weight:700; letter-spacing:.1em;">UPPER</td>
+            </tr>
+
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Ones</td>
+              <td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">2</td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">3</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Twos</td>
+              <td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">8</td>
+              <td style="padding:10px 8px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <!-- Alice's open slot: highlighted, tappable -->
+              <td style="padding:10px 16px; color:#ccc; font-weight:500;">Threes</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:5px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">9</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Fours</td>
+              <td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">12</td>
+              <td style="padding:10px 8px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:10px 16px; color:#ccc; font-weight:500;">Fives</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:5px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">20</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:10px 16px; color:#ccc; font-weight:500;">Sixes</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:5px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+
+            <!-- Bonus -->
+            <tr style="background:#111; border-top:1px solid #1e1e1e; border-bottom:2px solid #1e1e1e;">
+              <td style="padding:8px 16px; color:#444; font-size:11px;">Bonus ≥63 → +50</td>
+              <td style="padding:8px 8px; text-align:center;">
+                <div style="color:#444; font-size:10px;">22/63</div>
+                <div style="color:#f87171; font-size:12px; font-weight:700;">−14</div>
+              </td>
+              <td style="padding:8px 8px; text-align:center; opacity:0.4;">
+                <div style="color:#444; font-size:10px;">32/63</div>
+                <div style="color:#34d399; font-size:12px; font-weight:700;">+5</div>
+              </td>
+            </tr>
+
+            <tr style="background:#0d0d0d;">
+              <td colspan="3" style="padding:5px 16px; color:#2a2a2a; font-size:10px; font-weight:700; letter-spacing:.1em;">LOWER</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">One Pair</td>
+              <td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">10</td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">12</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:10px 16px; color:#ccc; font-weight:500;">Two Pairs</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:5px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600; opacity:0.4;">18</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414; background:#1a1428;">
+              <td style="padding:10px 16px; color:#ccc; font-weight:500;">Three of a Kind</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#a78bfa22; border:1px solid #a78bfa55; border-radius:6px; padding:5px 0; color:#a78bfa; font-size:13px; font-weight:600;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center; opacity:0.4;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39966; font-size:12px;">+</div>
+              </td>
+            </tr>
+
+            <!-- Total -->
+            <tr style="background:#111; border-top:2px solid #1e1e1e;">
+              <td style="padding:12px 16px; color:#555; font-size:11px; font-weight:700; letter-spacing:.08em;">TOTAL</td>
+              <td style="padding:12px 8px; text-align:center; color:#a78bfa; font-size:18px; font-weight:800;">52</td>
+              <td style="padding:12px 8px; text-align:center; color:#34d399; font-size:18px; font-weight:800; opacity:0.4;">62</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Setup screen -->
+  <div>
+    <p class="subtitle" style="text-align:center; margin-bottom:8px;">Setup Screen</p>
+    <div style="
+      width: 393px;
+      height: 852px;
+      background: #0a0a0a;
+      border-radius: 48px;
+      border: 2px solid #2a2a2a;
+      box-shadow: 0 0 0 1px #111, 0 20px 60px rgba(0,0,0,0.8);
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+    ">
+      <!-- Status bar -->
+      <div style="height:48px; background:#0a0a0a; display:flex; align-items:center; justify-content:space-between; padding:0 28px; flex-shrink:0;">
+        <span style="color:#ccc; font-size:13px; font-weight:600;">9:41</span>
+        <div style="width:120px; height:28px; background:#111; border-radius:20px;"></div>
+        <span style="color:#ccc; font-size:12px;">●●●</span>
+      </div>
+
+      <div style="flex:1; padding:32px 24px; display:flex; flex-direction:column; gap:32px; overflow-y:auto;">
+        <div>
+          <h1 style="color:#e0e0e0; font-size:32px; font-weight:800; letter-spacing:-.5px; margin:0 0 4px;">Yatzy</h1>
+          <p style="color:#444; font-size:14px; margin:0;">New game</p>
+        </div>
+
+        <!-- Rule set -->
+        <div>
+          <div style="color:#444; font-size:10px; letter-spacing:.12em; font-weight:700; margin-bottom:10px;">RULE SET</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <label style="display:flex; align-items:center; gap:12px; background:#1a1a1a; border:1px solid #a78bfa; border-radius:12px; padding:14px 16px; cursor:pointer;">
+              <div style="width:18px; height:18px; border-radius:50%; background:#a78bfa; display:flex; align-items:center; justify-content:center;">
+                <div style="width:7px; height:7px; border-radius:50%; background:#0a0a0a;"></div>
+              </div>
+              <div>
+                <div style="color:#e0e0e0; font-size:14px; font-weight:600;">Yatzy — 5 dice</div>
+                <div style="color:#555; font-size:12px;">Standard European rules</div>
+              </div>
+            </label>
+            <label style="display:flex; align-items:center; gap:12px; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:12px; padding:14px 16px; cursor:pointer;">
+              <div style="width:18px; height:18px; border-radius:50%; border:2px solid #333;"></div>
+              <div>
+                <div style="color:#888; font-size:14px; font-weight:600;">Maxi Yatzy — 6 dice</div>
+                <div style="color:#444; font-size:12px;">Extended categories</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Players -->
+        <div>
+          <div style="color:#444; font-size:10px; letter-spacing:.12em; font-weight:700; margin-bottom:10px;">PLAYERS</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; gap:10px; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:12px; padding:14px 16px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#a78bfa; flex-shrink:0;"></div>
+              <input style="flex:1; background:transparent; border:none; color:#e0e0e0; font-size:15px; font-weight:500; outline:none;" value="Alice" />
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:12px; padding:14px 16px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#34d399; flex-shrink:0;"></div>
+              <input style="flex:1; background:transparent; border:none; color:#e0e0e0; font-size:15px; font-weight:500; outline:none;" value="Bob" />
+            </div>
+            <button style="display:flex; align-items:center; gap:10px; background:transparent; border:1px dashed #2a2a2a; border-radius:12px; padding:14px 16px; color:#444; font-size:14px; cursor:pointer; width:100%;">
+              <span style="font-size:18px;">+</span> Add player
+            </button>
+          </div>
+        </div>
+
+        <!-- Start button -->
+        <div style="margin-top:auto;">
+          <button style="width:100%; background:#a78bfa; border:none; border-radius:14px; color:#0a0a0a; padding:18px; font-size:16px; font-weight:800; cursor:pointer; letter-spacing:-.2px;">Start Game →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

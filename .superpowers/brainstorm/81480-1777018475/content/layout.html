@@ -1,0 +1,105 @@
+<h2>Scorecard Layout</h2>
+<p class="subtitle">How should the main scorecard look? Both are dark and elegant.</p>
+
+<div class="cards">
+  <div class="card" data-choice="table" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #0f0f0f; border-radius: 8px; font-family: monospace; font-size: 12px;">
+      <table style="width:100%; border-collapse: collapse; color: #e0e0e0;">
+        <thead>
+          <tr style="border-bottom: 1px solid #333;">
+            <th style="text-align:left; padding: 4px 8px; color: #888; font-size: 11px;">CATEGORY</th>
+            <th style="padding: 4px 8px; color: #a78bfa; font-size: 11px;">ALICE</th>
+            <th style="padding: 4px 8px; color: #34d399; font-size: 11px;">BOB</th>
+            <th style="padding: 4px 8px; color: #f87171; font-size: 11px;">CAROL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #1a1a1a;">
+            <td style="padding: 4px 8px; color: #888; font-size: 11px;">Ones</td>
+            <td style="padding: 4px 8px; text-align:center; color:#a78bfa;">3</td>
+            <td style="padding: 4px 8px; text-align:center; color:#34d399;">—</td>
+            <td style="padding: 4px 8px; text-align:center; background:#1a1a1a; border-radius:4px; cursor:pointer; color:#555;">+</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #1a1a1a;">
+            <td style="padding: 4px 8px; color: #888; font-size: 11px;">Twos</td>
+            <td style="padding: 4px 8px; text-align:center; color:#a78bfa;">8</td>
+            <td style="padding: 4px 8px; text-align:center; color:#34d399;">6</td>
+            <td style="padding: 4px 8px; text-align:center; background:#1a1a1a; border-radius:4px; cursor:pointer; color:#555;">+</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #1a1a1a;">
+            <td style="padding: 4px 8px; color: #888; font-size: 11px;">Threes</td>
+            <td style="padding: 4px 8px; text-align:center; background:#1a1a1a; border-radius:4px; cursor:pointer; color:#555;">+</td>
+            <td style="padding: 4px 8px; text-align:center; background:#1a1a1a; border-radius:4px; cursor:pointer; color:#555;">+</td>
+            <td style="padding: 4px 8px; text-align:center; color:#f87171;">9</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #222; background: #111;">
+            <td style="padding: 4px 8px; color: #555; font-size: 10px;">Bonus</td>
+            <td style="padding: 4px 8px; text-align:center; color:#555; font-size:10px;">11/63</td>
+            <td style="padding: 4px 8px; text-align:center; color:#555; font-size:10px;">6/63</td>
+            <td style="padding: 4px 8px; text-align:center; color:#555; font-size:10px;">9/63</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #1a1a1a;">
+            <td style="padding: 4px 8px; color: #888; font-size: 11px;">Three of a Kind</td>
+            <td style="padding: 4px 8px; text-align:center; background:#1a1a1a; border-radius:4px; cursor:pointer; color:#555;">+</td>
+            <td style="padding: 4px 8px; text-align:center; background:#1a1a1a; border-radius:4px; cursor:pointer; color:#555;">+</td>
+            <td style="padding: 4px 8px; text-align:center; background:#1a1a1a; border-radius:4px; cursor:pointer; color:#555;">+</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="text-align:center; color:#555; font-size:10px; margin-top:8px;">↕ scroll for more categories</div>
+    </div>
+    <div class="card-body">
+      <h3>A — Classic Table</h3>
+      <p>All players visible side by side. Compact, spreadsheet-style. Best for 2–4 players at a glance. Gets wide with more players.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="columns" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 16px; background: #0f0f0f; border-radius: 8px;">
+      <div style="display:flex; gap:8px; align-items:flex-start;">
+        <!-- Player tabs -->
+        <div style="display:flex; flex-direction:column; gap:4px; min-width:70px;">
+          <div style="background:#a78bfa22; border: 1px solid #a78bfa; border-radius:6px; padding:6px 8px; text-align:center;">
+            <div style="color:#a78bfa; font-size:11px; font-weight:bold;">ALICE</div>
+            <div style="color:#a78bfa; font-size:14px;">11</div>
+          </div>
+          <div style="background:#1a1a1a; border: 1px solid #333; border-radius:6px; padding:6px 8px; text-align:center;">
+            <div style="color:#555; font-size:11px;">BOB</div>
+            <div style="color:#555; font-size:14px;">6</div>
+          </div>
+          <div style="background:#1a1a1a; border: 1px solid #333; border-radius:6px; padding:6px 8px; text-align:center;">
+            <div style="color:#555; font-size:11px;">CAROL</div>
+            <div style="color:#555; font-size:14px;">9</div>
+          </div>
+        </div>
+        <!-- Active player scorecard -->
+        <div style="flex:1; background:#141414; border-radius:6px; border: 1px solid #a78bfa44; overflow:hidden;">
+          <div style="background:#a78bfa11; padding:6px 10px; border-bottom:1px solid #333;">
+            <span style="color:#a78bfa; font-size:11px; font-weight:bold;">ALICE'S CARD</span>
+          </div>
+          <div style="padding:4px 8px; border-bottom:1px solid #1a1a1a; display:flex; justify-content:space-between;">
+            <span style="color:#888; font-size:11px;">Ones</span>
+            <span style="color:#a78bfa; font-size:11px;">3</span>
+          </div>
+          <div style="padding:4px 8px; border-bottom:1px solid #1a1a1a; display:flex; justify-content:space-between;">
+            <span style="color:#888; font-size:11px;">Twos</span>
+            <span style="color:#a78bfa; font-size:11px;">8</span>
+          </div>
+          <div style="padding:4px 8px; border-bottom:1px solid #1a1a1a; display:flex; justify-content:space-between; background:#1e1e1e; cursor:pointer;">
+            <span style="color:#ccc; font-size:11px;">Threes</span>
+            <span style="color:#555; font-size:11px;">tap</span>
+          </div>
+          <div style="padding:4px 8px; display:flex; justify-content:space-between;">
+            <span style="color:#888; font-size:11px;">Three of a Kind</span>
+            <span style="color:#555; font-size:11px;">tap</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; color:#555; font-size:10px; margin-top:8px;">tap player tab to switch view</div>
+    </div>
+    <div class="card-body">
+      <h3>B — Focus View</h3>
+      <p>One player's full card shown at a time, with all players in a sidebar. Mobile-friendly and clean. Requires tapping to switch player context.</p>
+    </div>
+  </div>
+</div>

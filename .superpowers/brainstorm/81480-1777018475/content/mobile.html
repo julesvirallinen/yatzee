@@ -1,0 +1,276 @@
+<h2>Mobile-First Layout</h2>
+<p class="subtitle">iPhone 17 sized (393×852). Scroll inside the phone frame to see the full scorecard.</p>
+
+<div style="display:flex; justify-content:center; gap:40px; flex-wrap:wrap; margin-top:8px;">
+
+  <!-- Phone frame: Game screen -->
+  <div>
+    <p class="subtitle" style="text-align:center; margin-bottom:8px;">Game Screen</p>
+    <div style="
+      width: 393px;
+      height: 852px;
+      background: #0a0a0a;
+      border-radius: 48px;
+      border: 2px solid #2a2a2a;
+      box-shadow: 0 0 0 1px #111, 0 20px 60px rgba(0,0,0,0.8);
+      overflow: hidden;
+      position: relative;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+    ">
+      <!-- Status bar -->
+      <div style="height:48px; background:#0a0a0a; display:flex; align-items:center; justify-content:space-between; padding:0 28px; flex-shrink:0;">
+        <span style="color:#ccc; font-size:13px; font-weight:600;">9:41</span>
+        <div style="width:120px; height:28px; background:#111; border-radius:20px;"></div>
+        <div style="display:flex; gap:6px; align-items:center;">
+          <div style="width:16px; height:10px; border:1.5px solid #ccc; border-radius:2px; position:relative;">
+            <div style="position:absolute; inset:1px 3px 1px 1px; background:#ccc; border-radius:1px;"></div>
+            <div style="position:absolute; right:-4px; top:50%; transform:translateY(-50%); width:3px; height:6px; background:#ccc; border-radius:1px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- App header -->
+      <div style="padding:8px 20px 10px; background:#0a0a0a; border-bottom:1px solid #1a1a1a; flex-shrink:0; display:flex; align-items:center; justify-content:space-between;">
+        <span style="color:#e0e0e0; font-size:18px; font-weight:700; letter-spacing:-.5px;">Yatzy</span>
+        <div style="display:flex; gap:8px;">
+          <div style="background:#1a1a1a; border-radius:20px; padding:5px 12px; color:#555; font-size:11px;">Round 4/15</div>
+          <div style="background:#1a1a1a; border-radius:20px; width:32px; height:32px; display:flex; align-items:center; justify-content:center; color:#555; font-size:15px;">⋯</div>
+        </div>
+      </div>
+
+      <!-- Scrollable score area -->
+      <div style="flex:1; overflow-y:auto; overflow-x:hidden;">
+        <table style="width:100%; border-collapse:collapse; font-size:14px;">
+          <thead style="position:sticky; top:0; z-index:10;">
+            <tr style="background:#111;">
+              <th style="padding:10px 16px; text-align:left; color:#444; font-size:10px; font-weight:700; letter-spacing:.1em; width:45%;">CATEGORY</th>
+              <th style="padding:10px 8px; text-align:center; color:#a78bfa; font-size:12px; font-weight:700; min-width:80px;">ALICE</th>
+              <th style="padding:10px 8px; text-align:center; color:#34d399; font-size:12px; font-weight:700; min-width:80px;">BOB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#0d0d0d;">
+              <td colspan="3" style="padding:5px 16px; color:#2a2a2a; font-size:10px; font-weight:700; letter-spacing:.1em;">UPPER</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Ones</td>
+              <td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">2</td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600;">3</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Twos</td>
+              <td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">8</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Threes</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600;">9</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Fours</td>
+              <td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">12</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Fives</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600;">20</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Sixes</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+
+            <!-- Bonus row -->
+            <tr style="background:#111; border-top:1px solid #1e1e1e; border-bottom:2px solid #1e1e1e;">
+              <td style="padding:8px 16px; color:#444; font-size:11px;">Bonus ≥63 → +50</td>
+              <td style="padding:8px 8px; text-align:center;">
+                <div style="color:#444; font-size:10px;">22/63</div>
+                <div style="color:#f87171; font-size:12px; font-weight:700;">−14</div>
+              </td>
+              <td style="padding:8px 8px; text-align:center;">
+                <div style="color:#444; font-size:10px;">32/63</div>
+                <div style="color:#34d399; font-size:12px; font-weight:700;">+5</div>
+              </td>
+            </tr>
+
+            <tr style="background:#0d0d0d;">
+              <td colspan="3" style="padding:5px 16px; color:#2a2a2a; font-size:10px; font-weight:700; letter-spacing:.1em;">LOWER</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">One Pair</td>
+              <td style="padding:10px 8px; text-align:center; color:#a78bfa; font-weight:600;">10</td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600;">12</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Two Pairs</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center; color:#34d399; font-weight:600;">18</td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Three of a Kind</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Four of a Kind</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Small Straight</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Large Straight</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Full House</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Chance</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #141414;">
+              <td style="padding:10px 16px; color:#777;">Yatzy</td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a1428; border-radius:6px; padding:5px 0; color:#a78bfa55; font-size:12px;">+</div>
+              </td>
+              <td style="padding:10px 8px; text-align:center;">
+                <div style="background:#1a2a1a; border-radius:6px; padding:5px 0; color:#34d39955; font-size:12px;">+</div>
+              </td>
+            </tr>
+
+            <!-- Total -->
+            <tr style="background:#111; border-top:2px solid #1e1e1e;">
+              <td style="padding:12px 16px; color:#555; font-size:11px; font-weight:700; letter-spacing:.08em;">TOTAL</td>
+              <td style="padding:12px 8px; text-align:center; color:#a78bfa; font-size:18px; font-weight:800;">52</td>
+              <td style="padding:12px 8px; text-align:center; color:#34d399; font-size:18px; font-weight:800;">62</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Phone frame: Score entry sheet -->
+  <div>
+    <p class="subtitle" style="text-align:center; margin-bottom:8px;">Score Entry (bottom sheet)</p>
+    <div style="
+      width: 393px;
+      height: 852px;
+      background: #0a0a0a;
+      border-radius: 48px;
+      border: 2px solid #2a2a2a;
+      box-shadow: 0 0 0 1px #111, 0 20px 60px rgba(0,0,0,0.8);
+      overflow: hidden;
+      position: relative;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+    ">
+      <!-- Dimmed background hint -->
+      <div style="flex:1; background:#0a0a0a; opacity:.4; display:flex; align-items:center; justify-content:center;">
+        <span style="color:#333; font-size:12px;">scorecard behind</span>
+      </div>
+
+      <!-- Bottom sheet -->
+      <div style="background:#141414; border-radius:24px 24px 0 0; border-top:1px solid #2a2a2a; padding:0 0 34px;">
+        <!-- Handle -->
+        <div style="display:flex; justify-content:center; padding:12px 0 4px;">
+          <div style="width:36px; height:4px; background:#2a2a2a; border-radius:2px;"></div>
+        </div>
+
+        <!-- Header -->
+        <div style="padding:8px 20px 12px; display:flex; align-items:baseline; justify-content:space-between; border-bottom:1px solid #1e1e1e;">
+          <div>
+            <span style="color:#a78bfa; font-size:15px; font-weight:700;">Alice</span>
+            <span style="color:#444; font-size:15px;"> — Threes</span>
+          </div>
+          <span style="color:#555; font-size:12px;">sum of all 3s</span>
+        </div>
+
+        <!-- Quick values -->
+        <div style="padding:18px 20px 12px;">
+          <div style="color:#444; font-size:10px; letter-spacing:.1em; margin-bottom:10px;">QUICK SELECT</div>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button style="flex:1; background:#1a1428; border:1px solid #a78bfa33; border-radius:10px; color:#a78bfa; padding:12px 0; font-size:16px; font-weight:600; cursor:pointer;">3</button>
+            <button style="flex:1; background:#1a1428; border:1px solid #a78bfa33; border-radius:10px; color:#a78bfa; padding:12px 0; font-size:16px; font-weight:600; cursor:pointer;">6</button>
+            <button style="flex:1; background:#1a1428; border:1px solid #a78bfa33; border-radius:10px; color:#a78bfa; padding:12px 0; font-size:16px; font-weight:600; cursor:pointer;">9</button>
+            <button style="flex:1; background:#1a1428; border:1px solid #a78bfa33; border-radius:10px; color:#a78bfa; padding:12px 0; font-size:16px; font-weight:600; cursor:pointer;">12</button>
+            <button style="flex:1; background:#1a1428; border:1px solid #a78bfa33; border-radius:10px; color:#a78bfa; padding:12px 0; font-size:16px; font-weight:600; cursor:pointer;">15</button>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div style="display:flex; align-items:center; gap:10px; padding:0 20px; margin-bottom:14px;">
+          <div style="flex:1; height:1px; background:#1e1e1e;"></div>
+          <span style="color:#333; font-size:11px;">or enter manually</span>
+          <div style="flex:1; height:1px; background:#1e1e1e;"></div>
+        </div>
+
+        <!-- Manual input -->
+        <div style="padding:0 20px; display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+          <button style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:10px; color:#888; width:44px; height:44px; font-size:20px; cursor:pointer;">−</button>
+          <input style="flex:1; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:10px; color:#e0e0e0; padding:10px; font-size:20px; text-align:center; font-weight:700;" value="9" />
+          <button style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:10px; color:#888; width:44px; height:44px; font-size:20px; cursor:pointer;">+</button>
+        </div>
+
+        <!-- Actions -->
+        <div style="padding:0 20px; display:flex; gap:10px;">
+          <button style="flex:1; background:#a78bfa; border:none; border-radius:12px; color:#0a0a0a; padding:14px; font-size:15px; font-weight:700; cursor:pointer;">Confirm 9</button>
+          <button style="background:#1a1a1a; border:1px solid #2a2a2a; border-radius:12px; color:#444; padding:14px 16px; font-size:13px; cursor:pointer;">✕ Cross out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
