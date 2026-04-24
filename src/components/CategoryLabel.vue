@@ -28,16 +28,15 @@ const SPECS: Record<string, number[][]> = {
   'maxi-yatzy':       [[6, 6, 6, 6, 6, 6]],
 }
 
-const TEXT_LABELS: Record<string, string> = {
-  'chance': 'Chance',
-}
-
+const isChance = props.categoryId === 'chance'
 const spec = SPECS[props.categoryId] ?? null
-const text = TEXT_LABELS[props.categoryId] ?? null
 </script>
 
 <template>
-  <span v-if="spec" class="dice-label">
+  <span v-if="isChance" class="dice-label">
+    <DiceFace :value="1" :size="13" :question="true" />
+  </span>
+  <span v-else-if="spec" class="dice-label">
     <template v-for="(group, gi) in spec" :key="gi">
       <span v-if="gi > 0" class="group-sep" />
       <span class="dice-group">
@@ -51,7 +50,6 @@ const text = TEXT_LABELS[props.categoryId] ?? null
       </span>
     </template>
   </span>
-  <span v-else-if="text" class="text-label">{{ text }}</span>
   <span v-else class="text-label">{{ categoryId }}</span>
 </template>
 
@@ -73,7 +71,7 @@ const text = TEXT_LABELS[props.categoryId] ?? null
   width: 1px;
   height: 10px;
   background: #333;
-  margin: 0 5px;
+  margin: 0 7px;
   flex-shrink: 0;
 }
 
