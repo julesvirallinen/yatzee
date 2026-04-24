@@ -9,6 +9,12 @@
           <span>{{ activePlayer.name }}</span>
         </div>
         <div class="round-badge">{{ roundDisplay }}</div>
+        <button
+          v-if="store.canUndo"
+          class="undo-btn"
+          @click="store.undoLast()"
+          aria-label="Undo last score"
+        >↩</button>
       </div>
     </header>
 
@@ -46,7 +52,11 @@
           :class="{ inactive: pi !== store.activePlayerIndex }"
         >
           <template v-if="player.scores[cat.id] !== null">
-            <span :style="deltaStyle(player, cat)">{{ formatDelta(player, cat) }}</span>
+            <span
+              :style="deltaStyle(player, cat)"
+              v-bind="useLongPress(() => { editTarget = { player, category: cat } })"
+              style="touch-action: none;"
+            >{{ formatDelta(player, cat) }}</span>
           </template>
           <template v-else>
             <div
@@ -96,7 +106,11 @@
           :class="{ inactive: pi !== store.activePlayerIndex }"
         >
           <template v-if="player.scores[cat.id] !== null">
-            <span :style="{ color: player.color, fontWeight: 600 }">{{ player.scores[cat.id] }}</span>
+            <span
+              :style="{ color: player.color, fontWeight: 600 }"
+              v-bind="useLongPress(() => { editTarget = { player, category: cat } })"
+              style="touch-action: none;"
+            >{{ player.scores[cat.id] }}</span>
           </template>
           <template v-else>
             <div
@@ -134,6 +148,16 @@
       @confirm="handleConfirm"
       @close="activeCategory = null"
     />
+
+    <!-- Edit modal (long-press on filled score) -->
+    <ScoreModal
+      v-if="editTarget"
+      :category="editTarget.category"
+      :player="editTarget.player"
+      :numDice="store.ruleSet.numDice"
+      @confirm="(score) => { store.editScore(editTarget!.player.id, editTarget!.category.id, score); editTarget = null }"
+      @close="editTarget = null"
+    />
   </div>
 </template>
 
@@ -147,6 +171,17 @@ import ScoreModal from '../components/ScoreModal.vue'
 const store = useGameStore()
 
 const activeCategory = ref<Category | null>(null)
+
+function useLongPress(onLongPress: () => void, duration = 500) {
+  let timer: ReturnType<typeof setTimeout> | null = null
+  return {
+    onPointerdown() { timer = setTimeout(onLongPress, duration) },
+    onPointerup() { if (timer) { clearTimeout(timer); timer = null } },
+    onPointercancel() { if (timer) { clearTimeout(timer); timer = null } },
+  }
+}
+
+const editTarget = ref<{ player: Player; category: Category } | null>(null)
 
 const activePlayer = computed(() => store.players[store.activePlayerIndex])
 
@@ -431,5 +466,18 @@ function deltaStyle(player: Player, cat: Category) {
 
 .open-slot.tappable {
   cursor: pointer;
+}
+
+.undo-btn {
+  background: var(--surface-3);
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

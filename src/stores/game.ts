@@ -22,6 +22,15 @@ export const useGameStore = defineStore('game', () => {
   const players = ref<Player[]>([])
   const activePlayerIndex = ref(0)
 
+  interface HistoryEntry {
+    playerId: string
+    categoryId: string
+    previousScore: number | null
+    previousActivePlayerIndex: number
+  }
+
+  const undoStack = ref<HistoryEntry[]>([])
+
   function setRuleSet(id: string) {
     const found = RULESETS.find(r => r.id === id)
     if (found) ruleSet.value = found
@@ -100,6 +109,12 @@ export const useGameStore = defineStore('game', () => {
 
   function enterScore(categoryId: string, score: number) {
     const player = players.value[activePlayerIndex.value]
+    undoStack.value.push({
+      playerId: player.id,
+      categoryId,
+      previousScore: player.scores[categoryId],
+      previousActivePlayerIndex: activePlayerIndex.value,
+    })
     player.scores[categoryId] = score
     if (isComplete.value) {
       currentView.value = 'results'
@@ -108,16 +123,43 @@ export const useGameStore = defineStore('game', () => {
     }
   }
 
+  function editScore(playerId: string, categoryId: string, score: number) {
+    const player = players.value.find(p => p.id === playerId)
+    if (!player) return
+    undoStack.value.push({
+      playerId,
+      categoryId,
+      previousScore: player.scores[categoryId],
+      previousActivePlayerIndex: activePlayerIndex.value,
+    })
+    player.scores[categoryId] = score
+  }
+
+  function undoLast() {
+    const entry = undoStack.value.pop()
+    if (!entry) return
+    const player = players.value.find(p => p.id === entry.playerId)
+    if (!player) return
+    player.scores[entry.categoryId] = entry.previousScore
+    activePlayerIndex.value = entry.previousActivePlayerIndex
+    if (currentView.value === 'results') {
+      currentView.value = 'game'
+    }
+  }
+
+  const canUndo = computed(() => undoStack.value.length > 0)
+
   function newGame() {
     players.value = []
     activePlayerIndex.value = 0
+    undoStack.value = []
     currentView.value = 'setup'
   }
 
   return {
     currentView, ruleSet, players, activePlayerIndex,
-    isComplete,
-    setRuleSet, setPlayers, startGame, enterScore, newGame,
+    isComplete, canUndo,
+    setRuleSet, setPlayers, startGame, enterScore, editScore, undoLast, newGame,
     upperTotal, upperDelta, bonusEarned, lowerTotal, grandTotal,
   }
 })

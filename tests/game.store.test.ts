@@ -259,3 +259,73 @@ describe('newGame', () => {
     expect(store.activePlayerIndex).toBe(0)
   })
 })
+
+describe('undoLast', () => {
+  it('reverts a score to null', () => {
+    const store = useGameStore()
+    setupGame(store)
+    store.enterScore('ones', 3)
+    store.undoLast()
+    expect(store.players[0].scores['ones']).toBeNull()
+  })
+  it('restores activePlayerIndex', () => {
+    const store = useGameStore()
+    setupGame(store)
+    store.enterScore('ones', 3) // Alice scores, Bob's turn
+    store.undoLast()
+    expect(store.activePlayerIndex).toBe(0)
+  })
+  it('canUndo is false initially', () => {
+    const store = useGameStore()
+    setupGame(store)
+    expect(store.canUndo).toBe(false)
+  })
+  it('canUndo is true after enterScore', () => {
+    const store = useGameStore()
+    setupGame(store)
+    store.enterScore('ones', 3)
+    expect(store.canUndo).toBe(true)
+  })
+  it('canUndo is false after undoLast empties stack', () => {
+    const store = useGameStore()
+    setupGame(store)
+    store.enterScore('ones', 3)
+    store.undoLast()
+    expect(store.canUndo).toBe(false)
+  })
+  it('undoes from results view back to game view', () => {
+    const store = useGameStore()
+    setupGame(store)
+    store.players.forEach(player => {
+      yatzy.categories.forEach(c => {
+        if (!(player.id === store.players[0].id && c.id === 'ones')) {
+          player.scores[c.id] = 5
+        }
+      })
+    })
+    store.enterScore('ones', 3) // game ends → results
+    expect(store.currentView).toBe('results')
+    store.undoLast()
+    expect(store.currentView).toBe('game')
+    expect(store.players[0].scores['ones']).toBeNull()
+  })
+})
+
+describe('editScore', () => {
+  it('updates a filled score without advancing turn', () => {
+    const store = useGameStore()
+    setupGame(store)
+    store.enterScore('ones', 3) // Alice scores 3, Bob's turn
+    store.editScore(store.players[0].id, 'ones', 5)
+    expect(store.players[0].scores['ones']).toBe(5)
+    expect(store.activePlayerIndex).toBe(1) // still Bob's turn
+  })
+  it('is undoable', () => {
+    const store = useGameStore()
+    setupGame(store)
+    store.enterScore('ones', 3)
+    store.editScore(store.players[0].id, 'ones', 5)
+    store.undoLast() // undo edit → back to 3
+    expect(store.players[0].scores['ones']).toBe(3)
+  })
+})
