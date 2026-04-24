@@ -29,18 +29,18 @@ function backspace() {
   <div class="numpad">
     <div class="numpad-display">{{ display || '0' }}</div>
     <div class="numpad-grid">
-      <button class="num-key" @click="press('1')">1</button>
-      <button class="num-key" @click="press('2')">2</button>
-      <button class="num-key" @click="press('3')">3</button>
-      <button class="num-key" @click="press('4')">4</button>
-      <button class="num-key" @click="press('5')">5</button>
-      <button class="num-key" @click="press('6')">6</button>
-      <button class="num-key" @click="press('7')">7</button>
-      <button class="num-key" @click="press('8')">8</button>
-      <button class="num-key" @click="press('9')">9</button>
-      <button class="num-key ghost" disabled></button>
-      <button class="num-key" @click="press('0')">0</button>
-      <button class="num-key backspace" @click="backspace">⌫</button>
+      <button type="button" class="num-key" @click="press('1')">1</button>
+      <button type="button" class="num-key" @click="press('2')">2</button>
+      <button type="button" class="num-key" @click="press('3')">3</button>
+      <button type="button" class="num-key" @click="press('4')">4</button>
+      <button type="button" class="num-key" @click="press('5')">5</button>
+      <button type="button" class="num-key" @click="press('6')">6</button>
+      <button type="button" class="num-key" @click="press('7')">7</button>
+      <button type="button" class="num-key" @click="press('8')">8</button>
+      <button type="button" class="num-key" @click="press('9')">9</button>
+      <button type="button" class="num-key ghost" disabled></button>
+      <button type="button" class="num-key" @click="press('0')">0</button>
+      <button type="button" class="num-key backspace" @click="backspace">⌫</button>
     </div>
   </div>
 </template>

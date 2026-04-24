@@ -17,10 +17,10 @@
           {{ (category.scoring as { type: 'fixed'; points: number }).points }} pts
         </div>
         <div class="actions">
-          <button class="confirm-btn" :style="confirmStyle" @click="confirm((category.scoring as { type: 'fixed'; points: number }).points)">
+          <button type="button" class="confirm-btn" :style="confirmStyle" @click="confirm((category.scoring as { type: 'fixed'; points: number }).points)">
             Confirm {{ (category.scoring as { type: 'fixed'; points: number }).points }}
           </button>
-          <button class="cross-btn" @click="confirm(0)">✕ Cross out</button>
+          <button type="button" class="cross-btn" @click="confirm(0)">✕ Cross out</button>
         </div>
       </template>
 
@@ -31,6 +31,7 @@
           <button
             v-for="n in quickValues"
             :key="n"
+            type="button"
             class="quick-btn"
             :class="{ selected: manualValue === n }"
             :style="quickBtnStyle(n)"
@@ -40,10 +41,10 @@
         <div class="divider"><span>or</span></div>
         <NumPad v-model="manualValue" :max="maxValue" />
         <div class="actions">
-          <button class="confirm-btn" :style="confirmStyle" @click="confirm(manualValue)">
+          <button type="button" class="confirm-btn" :style="confirmStyle" @click="confirm(manualValue)">
             Confirm {{ manualValue }}
           </button>
-          <button class="cross-btn" @click="confirm(0)">✕ Cross out</button>
+          <button type="button" class="cross-btn" @click="confirm(0)">✕ Cross out</button>
         </div>
       </template>
 
@@ -51,10 +52,10 @@
       <template v-else>
         <NumPad v-model="manualValue" />
         <div class="actions">
-          <button class="confirm-btn" :style="confirmStyle" @click="confirm(manualValue)">
+          <button type="button" class="confirm-btn" :style="confirmStyle" @click="confirm(manualValue)">
             Confirm {{ manualValue }}
           </button>
-          <button class="cross-btn" @click="confirm(0)">✕ Cross out</button>
+          <button type="button" class="cross-btn" @click="confirm(0)">✕ Cross out</button>
         </div>
       </template>
     </div>
