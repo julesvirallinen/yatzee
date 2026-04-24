@@ -38,20 +38,18 @@ const text = TEXT_LABELS[props.categoryId] ?? null
 
 <template>
   <span v-if="spec" class="dice-label">
-    <span
-      v-for="(group, gi) in spec"
-      :key="gi"
-      class="dice-group"
-      :style="gi > 0 ? { marginLeft: '5px' } : {}"
-    >
-      <DiceFace
-        v-for="(val, di) in group"
-        :key="di"
-        :value="val"
-        :size="13"
-        :style="di > 0 ? { marginLeft: '2px' } : {}"
-      />
-    </span>
+    <template v-for="(group, gi) in spec" :key="gi">
+      <span v-if="gi > 0" class="group-sep" />
+      <span class="dice-group">
+        <DiceFace
+          v-for="(val, di) in group"
+          :key="di"
+          :value="val"
+          :size="13"
+          :style="di > 0 ? { marginLeft: '2px' } : {}"
+        />
+      </span>
+    </template>
   </span>
   <span v-else-if="text" class="text-label">{{ text }}</span>
   <span v-else class="text-label">{{ categoryId }}</span>
@@ -61,12 +59,22 @@ const text = TEXT_LABELS[props.categoryId] ?? null
 .dice-label {
   display: flex;
   align-items: center;
+  gap: 0;
   flex-wrap: nowrap;
 }
 
 .dice-group {
   display: flex;
   align-items: center;
+}
+
+.group-sep {
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background: #333;
+  margin: 0 5px;
+  flex-shrink: 0;
 }
 
 .text-label {
