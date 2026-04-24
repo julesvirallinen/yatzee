@@ -31,6 +31,14 @@ describe('yatzy ruleset', () => {
   it('has 5 dice', () => {
     expect(yatzy.numDice).toBe(5)
   })
+  it('category IDs are unique', () => {
+    const ids = yatzy.categories.map(c => c.id)
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+  it('large-straight scores 20 fixed', () => {
+    const cat = yatzy.categories.find(c => c.id === 'large-straight')!
+    expect(cat.scoring).toEqual({ type: 'fixed', points: 20 })
+  })
 })
 
 describe('maxi-yatzy ruleset', () => {
@@ -58,6 +66,16 @@ describe('maxi-yatzy ruleset', () => {
   it('has villa and tower categories', () => {
     expect(maxiYatzy.categories.find(c => c.id === 'villa')).toBeDefined()
     expect(maxiYatzy.categories.find(c => c.id === 'tower')).toBeDefined()
+  })
+  it('category IDs are unique', () => {
+    const ids = maxiYatzy.categories.map(c => c.id)
+    expect(new Set(ids).size).toBe(ids.length)
+  })
+  it('upper categories have unique face values 1–6', () => {
+    const values = maxiYatzy.categories
+      .filter(c => c.scoring.type === 'sum-of-value')
+      .map(c => (c.scoring as { type: 'sum-of-value'; value: number }).value)
+    expect(values.sort()).toEqual([1, 2, 3, 4, 5, 6])
   })
 })
 
