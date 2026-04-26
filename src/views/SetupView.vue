@@ -82,10 +82,15 @@ import { useGameStore } from '../stores/game'
 import { RULESETS } from '../rulesets'
 
 const PLAYER_COLORS = ['#a78bfa', '#34d399', '#fb923c', '#f87171']
+const STORAGE_KEY = 'yatzy-player-names'
 
 const store = useGameStore()
 const selectedRuleSetId = ref('yatzy')
-const playerNames = ref(['', ''])
+
+const saved = (() => {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]') } catch { return [] }
+})()
+const playerNames = ref<string[]>(saved.length >= 2 ? saved : ['', ''])
 
 const canStart = computed(() =>
   playerNames.value.filter(n => n.trim().length > 0).length >= 2
@@ -93,6 +98,7 @@ const canStart = computed(() =>
 
 function startGame() {
   const validNames = playerNames.value.filter(n => n.trim().length > 0)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(playerNames.value))
   store.setRuleSet(selectedRuleSetId.value)
   store.setPlayers(validNames)
   store.startGame()

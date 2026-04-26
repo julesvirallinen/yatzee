@@ -61,11 +61,12 @@ export const useGameStore = defineStore('game', () => {
   function upperDelta(playerId: string): number {
     const player = players.value.find(p => p.id === playerId)
     if (!player) return 0
+    const baseline = ruleSet.value.bonusThreshold / 21
     return ruleSet.value.categories
       .filter(c => c.section === 'upper')
       .filter(isSumOfValue)
       .filter(c => player.scores[c.id] !== null)
-      .reduce((sum, c) => sum + (player.scores[c.id]! - 3 * c.scoring.value), 0)
+      .reduce((sum, c) => sum + (player.scores[c.id]! - baseline * c.scoring.value), 0)
   }
 
   function bonusEarned(playerId: string): boolean {
