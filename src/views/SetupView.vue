@@ -10,16 +10,12 @@
         <div class="section-label">RULE SET</div>
         <div class="ruleset-options">
           <label
-            v-for="rs in RULESETS"
+            v-for="rs in MAIN_RULESETS"
             :key="rs.id"
             class="ruleset-card"
             :class="{ active: selectedRuleSetId === rs.id }"
           >
-            <input
-              type="radio"
-              :value="rs.id"
-              v-model="selectedRuleSetId"
-            />
+            <input type="radio" :value="rs.id" v-model="selectedRuleSetId" />
             <div class="radio-dot">
               <div v-if="selectedRuleSetId === rs.id" class="radio-inner" />
             </div>
@@ -28,6 +24,28 @@
               <div class="ruleset-desc">{{ rs.categories.length }} categories</div>
             </div>
           </label>
+
+          <button class="more-btn" @click="showMoreRulesets = !showMoreRulesets">
+            {{ showMoreRulesets ? '− Less' : '+ More' }}
+          </button>
+
+          <template v-if="showMoreRulesets">
+            <label
+              v-for="rs in MORE_RULESETS"
+              :key="rs.id"
+              class="ruleset-card"
+              :class="{ active: selectedRuleSetId === rs.id }"
+            >
+              <input type="radio" :value="rs.id" v-model="selectedRuleSetId" />
+              <div class="radio-dot">
+                <div v-if="selectedRuleSetId === rs.id" class="radio-inner" />
+              </div>
+              <div class="ruleset-info">
+                <div class="ruleset-name">{{ rs.name }}</div>
+                <div class="ruleset-desc">{{ rs.categories.length }} categories · no bonus</div>
+              </div>
+            </label>
+          </template>
         </div>
       </section>
 
@@ -79,13 +97,14 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useGameStore } from '../stores/game'
-import { RULESETS } from '../rulesets'
+import { MAIN_RULESETS, MORE_RULESETS } from '../rulesets'
 
 const PLAYER_COLORS = ['#a78bfa', '#34d399', '#fb923c', '#f87171']
 const STORAGE_KEY = 'yatzy-player-names'
 
 const store = useGameStore()
 const selectedRuleSetId = ref('yatzy')
+const showMoreRulesets = ref(false)
 
 const saved = (() => {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]') } catch { return [] }
@@ -206,6 +225,19 @@ h1 {
   font-size: 12px;
   color: var(--text-muted);
   margin-top: 2px;
+}
+
+.more-btn {
+  background: transparent;
+  border: 1px dashed var(--border-2);
+  border-radius: 10px;
+  padding: 8px 14px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: left;
+  width: fit-content;
 }
 
 .player-list {

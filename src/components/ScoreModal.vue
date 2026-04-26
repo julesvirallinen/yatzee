@@ -38,7 +38,7 @@
             @click="manualValue = n"
           >
             <span class="quick-score">{{ n }}</span>
-            <span class="quick-delta" :style="quickDeltaStyle(n)">{{ formatQuickDelta(n) }}</span>
+            <span v-if="bonusThreshold > 0" class="quick-delta" :style="quickDeltaStyle(n)">{{ formatQuickDelta(n) }}</span>
           </button>
         </div>
         <div class="divider"><span>or</span></div>
