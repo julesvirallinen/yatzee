@@ -53,12 +53,10 @@
         >
           <template v-if="player.scores[cat.id] !== null">
             <span
-              class="score-filled upper-score-filled"
+              class="score-filled"
+              :style="{ color: player.color, fontWeight: 600 }"
               v-bind="useLongPress(() => { editTarget = { player, category: cat } })"
-            >
-              <span :style="{ color: player.color, fontWeight: 600 }">{{ player.scores[cat.id] }}</span>
-              <span class="upper-delta" :style="deltaStyle(player, cat)">{{ formatDelta(player, cat) }}</span>
-            </span>
+            >{{ player.scores[cat.id] }}</span>
           </template>
           <template v-else>
             <div
@@ -147,6 +145,7 @@
       :category="activeCategory"
       :player="activePlayer"
       :numDice="store.ruleSet.numDice"
+      :bonusThreshold="store.ruleSet.bonusThreshold"
       @confirm="handleConfirm"
       @close="activeCategory = null"
     />
@@ -157,6 +156,7 @@
       :category="editTarget.category"
       :player="editTarget.player"
       :numDice="store.ruleSet.numDice"
+      :bonusThreshold="store.ruleSet.bonusThreshold"
       @confirm="(score) => { store.editScore(editTarget!.player.id, editTarget!.category.id, score); editTarget = null }"
       @close="editTarget = null"
     />
@@ -225,28 +225,6 @@ function handleConfirm(score: number) {
   activeCategory.value = null
 }
 
-function catPace(cat: Category): number {
-  const baseline = store.ruleSet.bonusThreshold / 21
-  return baseline * (cat.scoring as { type: 'sum-of-value'; value: number }).value
-}
-
-function formatDelta(player: Player, cat: Category): string {
-  const score = player.scores[cat.id]
-  if (score === null) return ''
-  const delta = score - catPace(cat)
-  return delta > 0 ? `+${delta}` : `${delta}`
-}
-
-function deltaStyle(player: Player, cat: Category) {
-  const score = player.scores[cat.id]
-  if (score === null) return {}
-  const delta = score - catPace(cat)
-  return {
-    color: delta > 0 ? 'var(--positive)' : delta < 0 ? 'var(--negative)' : 'var(--neutral)',
-    fontWeight: 700,
-    fontSize: '13px',
-  }
-}
 </script>
 
 <style scoped>
@@ -478,18 +456,7 @@ function deltaStyle(player: Player, cat: Category) {
   touch-action: none;
 }
 
-.upper-score-filled {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1;
-  gap: 1px;
-}
 
-.upper-delta {
-  font-size: 10px;
-  font-weight: 700;
-}
 
 .undo-btn {
   background: var(--surface-3);

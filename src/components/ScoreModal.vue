@@ -36,7 +36,10 @@
             :class="{ selected: manualValue === n }"
             :style="quickBtnStyle(n)"
             @click="manualValue = n"
-          >{{ n }}</button>
+          >
+            <span class="quick-score">{{ n }}</span>
+            <span class="quick-delta" :style="quickDeltaStyle(n)">{{ formatQuickDelta(n) }}</span>
+          </button>
         </div>
         <div class="divider"><span>or</span></div>
         <NumPad v-model="manualValue" :max="maxValue" />
@@ -72,6 +75,7 @@ const props = defineProps<{
   category: Category
   player: Player
   numDice: number
+  bonusThreshold: number
 }>()
 
 const emit = defineEmits<{
@@ -116,6 +120,24 @@ function quickBtnStyle(n: number) {
   }
 }
 
+function formatQuickDelta(n: number): string {
+  if (props.category.scoring.type !== 'sum-of-value') return ''
+  const v = (props.category.scoring as { type: 'sum-of-value'; value: number }).value
+  const pace = (props.bonusThreshold / 21) * v
+  const delta = n - pace
+  return delta > 0 ? `+${delta}` : `${delta}`
+}
+
+function quickDeltaStyle(n: number) {
+  if (props.category.scoring.type !== 'sum-of-value') return {}
+  const v = (props.category.scoring as { type: 'sum-of-value'; value: number }).value
+  const pace = (props.bonusThreshold / 21) * v
+  const delta = n - pace
+  return {
+    color: delta > 0 ? 'var(--positive)' : delta < 0 ? 'var(--negative)' : 'var(--neutral)',
+  }
+}
+
 function confirm(score: number) {
   emit('confirm', score)
 }
@@ -136,7 +158,7 @@ function confirm(score: number) {
   background: #141414;
   border-radius: 24px 24px 0 0;
   border-top: 1px solid var(--border-2);
-  padding-bottom: env(safe-area-inset-bottom, 16px);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 2rem);
 }
 
 .handle-bar {
@@ -186,10 +208,26 @@ function confirm(score: number) {
 .quick-btn {
   flex: 1;
   border-radius: 10px;
-  padding: 10px 0;
+  padding: 8px 0;
   font-size: 15px;
   font-weight: 600;
   transition: all 0.1s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.quick-score {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.quick-delta {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .divider {
