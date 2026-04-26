@@ -53,10 +53,12 @@
         >
           <template v-if="player.scores[cat.id] !== null">
             <span
-              :style="deltaStyle(player, cat)"
-              class="score-filled"
+              class="score-filled upper-score-filled"
               v-bind="useLongPress(() => { editTarget = { player, category: cat } })"
-            >{{ formatDelta(player, cat) }}</span>
+            >
+              <span :style="{ color: player.color, fontWeight: 600 }">{{ player.scores[cat.id] }}</span>
+              <span class="upper-delta" :style="deltaStyle(player, cat)">{{ formatDelta(player, cat) }}</span>
+            </span>
           </template>
           <template v-else>
             <div
@@ -223,23 +225,26 @@ function handleConfirm(score: number) {
   activeCategory.value = null
 }
 
+function catPace(cat: Category): number {
+  const baseline = store.ruleSet.bonusThreshold / 21
+  return baseline * (cat.scoring as { type: 'sum-of-value'; value: number }).value
+}
+
 function formatDelta(player: Player, cat: Category): string {
   const score = player.scores[cat.id]
   if (score === null) return ''
-  const pace = 3 * (cat.scoring as { type: 'sum-of-value'; value: number }).value
-  const delta = score - pace
+  const delta = score - catPace(cat)
   return delta > 0 ? `+${delta}` : `${delta}`
 }
 
 function deltaStyle(player: Player, cat: Category) {
   const score = player.scores[cat.id]
   if (score === null) return {}
-  const pace = 3 * (cat.scoring as { type: 'sum-of-value'; value: number }).value
-  const delta = score - pace
+  const delta = score - catPace(cat)
   return {
     color: delta > 0 ? 'var(--positive)' : delta < 0 ? 'var(--negative)' : 'var(--neutral)',
     fontWeight: 700,
-    fontSize: '15px',
+    fontSize: '13px',
   }
 }
 </script>
@@ -257,14 +262,14 @@ function deltaStyle(player: Player, cat: Category) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 5px 12px;
   background: var(--bg);
   border-bottom: 1px solid var(--border-1);
   flex-shrink: 0;
 }
 
 .app-title {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: -0.5px;
   color: var(--text-primary);
@@ -272,33 +277,33 @@ function deltaStyle(player: Player, cat: Category) {
 
 .header-right {
   display: flex;
-  gap: 7px;
+  gap: 5px;
   align-items: center;
 }
 
 .turn-pill {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   border-radius: 20px;
-  padding: 5px 11px;
-  font-size: 11px;
+  padding: 3px 9px;
+  font-size: 10px;
   font-weight: 600;
   color: v-bind('activePlayer.color');
 }
 
 .turn-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
 }
 
 .round-badge {
   background: var(--surface-3);
   border-radius: 20px;
-  padding: 5px 11px;
+  padding: 3px 9px;
   color: var(--neutral);
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .col-headers {
@@ -314,13 +319,13 @@ function deltaStyle(player: Player, cat: Category) {
 
 .player-col-header {
   width: 84px;
-  padding: 8px 0;
+  padding: 5px 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   transition: opacity 0.2s;
 }
@@ -346,11 +351,11 @@ function deltaStyle(player: Player, cat: Category) {
 .section-label {
   flex-shrink: 0;
   background: #0d0d0d;
-  padding: 0 16px;
-  height: 20px;
+  padding: 0 12px;
+  height: 14px;
   display: flex;
   align-items: center;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--text-faint);
@@ -471,6 +476,19 @@ function deltaStyle(player: Player, cat: Category) {
 
 .score-filled {
   touch-action: none;
+}
+
+.upper-score-filled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  gap: 1px;
+}
+
+.upper-delta {
+  font-size: 10px;
+  font-weight: 700;
 }
 
 .undo-btn {
