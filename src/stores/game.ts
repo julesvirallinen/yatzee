@@ -70,7 +70,7 @@ export const useGameStore = defineStore('game', () => {
   }
 
   function bonusEarned(playerId: string): boolean {
-    return upperTotal(playerId) >= ruleSet.value.bonusThreshold
+    return ruleSet.value.bonusThreshold > 0 && upperTotal(playerId) >= ruleSet.value.bonusThreshold
   }
 
   function lowerTotal(playerId: string): number {

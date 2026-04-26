@@ -36,7 +36,7 @@
     <div class="scorecard">
 
       <!-- UPPER section label -->
-      <div class="section-label">UPPER — pace delta</div>
+      <div class="section-label">{{ store.ruleSet.bonusThreshold > 0 ? 'UPPER — pace delta' : 'UPPER' }}</div>
 
       <!-- Upper rows -->
       <div
@@ -70,7 +70,7 @@
       </div>
 
       <!-- Bonus row -->
-      <div class="row bonus-row">
+      <div v-if="store.ruleSet.bonusThreshold > 0" class="row bonus-row">
         <div class="cat-name-cell bonus-label">
           <div class="bonus-title">BONUS</div>
           <div class="bonus-threshold">≥ {{ store.ruleSet.bonusThreshold }} → +{{ store.ruleSet.bonusPoints }}</div>
