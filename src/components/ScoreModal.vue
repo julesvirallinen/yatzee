@@ -86,6 +86,7 @@ const emit = defineEmits<{
 const manualValue = ref(0)
 
 const hint = computed(() => {
+  if (props.category.id === 'secret-dice') return '40 pts, or joker — any score'
   if (props.category.scoring.type === 'sum-of-value') return `sum of all ${props.category.name.toLowerCase()} rolled`
   if (props.category.scoring.type === 'fixed') return `fixed score`
   return 'sum of dice used'

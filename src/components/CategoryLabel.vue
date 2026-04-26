@@ -26,9 +26,11 @@ const SPECS: Record<string, number[][]> = {
   'tower':            [[5, 5, 5, 5], [3, 3]],
   'yatzy':            [[5, 5, 5, 5, 5]],
   'maxi-yatzy':       [[6, 6, 6, 6, 6, 6]],
+  'four-in-a-row':    [[1, 2, 3, 4]],
+  'secret-dice':      [[5, 5, 5, 5, 5]],
 }
 
-const isChance = props.categoryId === 'chance'
+const isChance = props.categoryId === 'chance' || props.categoryId === 'total'
 const spec = SPECS[props.categoryId] ?? null
 </script>
 

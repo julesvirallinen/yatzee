@@ -15,9 +15,9 @@ export const secretDice: RuleSet = {
     { id: 'sixes',  name: 'Sixes',  section: 'upper', scoring: { type: 'sum-of-value', value: 6 } },
     { id: 'total',          name: 'Total',        section: 'lower', scoring: { type: 'sum-all' } },
     { id: 'full-house',     name: '2·3 Dice',     section: 'lower', scoring: { type: 'fixed', points: 20 } },
-    { id: 'small-straight', name: '4 in a Row',   section: 'lower', scoring: { type: 'fixed', points: 20 } },
+    { id: 'four-in-a-row',  name: '4 in a Row',   section: 'lower', scoring: { type: 'fixed', points: 20 } },
     { id: 'large-straight', name: '5 in a Row',   section: 'lower', scoring: { type: 'fixed', points: 30 } },
     { id: 'four-of-a-kind', name: '4 Dice',       section: 'lower', scoring: { type: 'fixed', points: 20 } },
-    { id: 'secret-dice',    name: '5 Dice/Joker', section: 'lower', scoring: { type: 'fixed', points: 40 } },
+    { id: 'secret-dice',    name: '5 Dice/Joker', section: 'lower', scoring: { type: 'sum-all' } },
   ],
 }
